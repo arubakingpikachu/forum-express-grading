@@ -135,11 +135,19 @@ const userController = {
         } // 此關聯是否早已存在?
       })
     ])
+<<<<<<< HEAD
       .then(([restaurant, favorite]) => {
         if (!restaurant) throw new Error("Restaurant didn't exist!")
         if (favorite) throw new Error('You have favorited this restaurant!')
 
         return Favorite.create({
+=======
+      .then(([restaurant, like]) => {
+        if (!restaurant) throw new Error("Restaurant didn't exist!")
+        if (like) throw new Error('You have liked this restaurant!')
+
+        return Like.create({
+>>>>>>> R04
           userId: req.user.id,
           restaurantId
         })
@@ -148,7 +156,11 @@ const userController = {
       .catch(err => next(err))
   },
   removeLike: (req, res, next) => {
+<<<<<<< HEAD
     return Favorite.findOne({
+=======
+    return Like.findOne({
+>>>>>>> R04
       where: {
         userId: req.user.id,
         restaurantId: req.params.restaurantId
